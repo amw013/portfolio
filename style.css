@@ -1,6 +1,26 @@
 body {
-  /* Set line height to 1.5 times the font size
-	   and use the OS’s UI font as the website font
-	 */
-  font: 100%/1.5 system-ui;
+  margin: 1em;
+  font-family: sans-serif;
+  line-height: 1.5;
 }
+
+main {
+  max-width: 60ch;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+nav ul,
+nav li {
+  display: contents;
+}
+
+
+main {
+  max-width: 100ch;
+  margin-inline: max(1em, (100% - 100ch) / 2);
+}
+
