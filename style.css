@@ -85,6 +85,10 @@ form label {
     display: contents;
 }
 
+.form-row {
+    display: contents;
+}
+
 form input,
 form textarea {
     width: auto; 

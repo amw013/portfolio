@@ -22,12 +22,21 @@
     
     <main>
         <form action="mailto:amw013@ucsd.edu" method="post" enctype="text/plain">
-            <label>Email</label>
-            <input name="email" type="email">
-            <label>Subject</label>
-            <input name="subject">
-            <label>Body</label>
-            <textarea name="body"></textarea>
+            <div class="form-row">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email">
+            </div>
+
+            <div class="form-row">
+                <label for="subject">Subject</label>
+                <input id="subject" name="subject">
+            </div>
+
+            <div class="form-row">
+                <label for="body">Body</label>
+                <textarea id="body" name="body"></textarea>
+            </div>
+            
             <button>Submit</button>
         </form>
     </main>
