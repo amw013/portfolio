@@ -99,6 +99,7 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
 
         let imagePath = project.image || '';
         if (imagePath.startsWith('../')) {
+            console.log('IT’S ALIVE!');
             imagePath = imagePath.replace('../', '');
         }
 
