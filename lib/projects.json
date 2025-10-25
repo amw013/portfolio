@@ -1,61 +1,75 @@
 [
     {
-        "title": "Lorem ipsum dolor sit.",
+        "title": "COGS 108 Final Project",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, debitis? Quidem maiores quia tempore accusantium illum libero vitae pariatur voluptatem vero dolore quibusdam, molestiae expedita provident veritatis minus unde obcaecati."
+        "description": "Exploratory data analysis group project. Project description and findings will be updated after submission."
     },
     {
-        "title": "Magni officia dicta adipisci.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Veniam blanditiis esse eum illo quis neque nemo a quos quod animi ipsa, ducimus accusamus fugit reprehenderit facilis consequatur nulla dicta ab provident quo laboriosam laudantium vero placeat. Amet, a?"
+        "title": "Deceptive Visualizations",
+        "year": "2025",
+        "image": "images\\Screenshot 2025-10-24 215056.png",
+        "description": "Our group generated one data visualization supporting the proposition that black police officers are more likely to face severe discipline for substantiated complaints than officers of color, even when accounting for complaint type, and one arguing against it. These visualizations incorporated deceptive visualization techniques that convinced viewers of their respective messages."
     },
     {
-        "title": "Corporis veritatis provident aut.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Enim dolores quos quisquam distinctio quis. Earum, beatae commodi accusamus blanditiis quasi possimus sequi non magnam ducimus quis quam quisquam modi nesciunt tempora, ad et maiores? Nisi corrupti quasi laudantium."
+        "title": "The Cost of Convenience: How Industrial Processing Strips Food of Nutrition",
+        "year": "2025",
+        "image": "images\\Screenshot 2025-10-24 215605.png",
+        "description": "Average nutrient profiles per 100g of food (scaled 0–1 for visual clarity) across NOVA processing levels."
+
     },
     {
-        "title": "Illo corporis perspiciatis quas?",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Neque voluptatum repudiandae at temporibus a ipsa placeat mollitia corporis eos minima quas ratione nisi molestias, numquam harum labore blanditiis architecto laborum eligendi? Itaque eum accusantium tenetur totam inventore minima!"
+        "title": "Recipe Ratings and Health: Does Nutrition Affect How We Rate?",
+        "year": "2025",
+        "image": "images\\Screenshot 2025-10-24 215827.png",
+        "description": "We all have different ideas about what makes a recipe great—taste, convenience, healthiness, or a mix of all three. But when people leave reviews online, what factors most influence those ratings? For my DSC 80 final project at UC San Diego, I explored whether the nutritional content of a recipe, like its protein, sugar, or calories, influences how well it’s rated by users. I used two datasets from Food.com containing thousands of recipes and user ratings."
     },
     {
-        "title": "Tempora recusandae adipisci veritatis!",
+        "title": "Language Modeling from Scratch: Building N-Gram Text Generators",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Provident minus exercitationem sit natus voluptas, illum similique, vitae quasi corrupti nihil architecto eos. Corporis sed nobis maxime fugiat repellat ipsam illo. Soluta autem odit nihil optio repellendus quam accusantium."
+        "description": "I implemented and compared Uniform, Unigram, and N-Gram language models from scratch to generate text and estimate word sequence probabilities using data from Project Gutenberg."
     },
     {
-        "title": "Ex a optio dolores!",
+        "title": "Loan Data Analysis and Tax-Adjusted Income Modeling",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Aliquid tempore est vero, et consectetur fugiat minus nam quam cumque vel consequuntur inventore qui incidunt, asperiores animi dolorem mollitia laborum velit autem ut dolore error repellendus enim quia! Voluptas!"
+        "description": "I cleaned and analyzed U.S. loan data to explore relationships between credit scores, loan terms, and income after taxes. I also performed permutation testing and identified an example of Simpson’s Paradox in borrower behavior."
     },
     {
-        "title": "Ea sint recusandae fuga.",
+        "title": "San Diego Bus Network Simulation and Visualization",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Neque ipsa ipsam culpa dicta, recusandae aliquid tempora eveniet nobis ducimus consequatur, excepturi mollitia suscipit ullam quasi rem provident hic reprehenderit repudiandae. Architecto cupiditate iure provident accusantium. Molestias, neque iusto!"
+        "description": "I modeled, analyzesd, and visualized San Diego’s public bus network, integrating geospatial data, graph traversal, and stochastic simulation to explore transit connectivity and passenger experiences."
+    },
+    
+    {
+        "title": "Data Analysis Proposal: Country GDP, Plastic Waste Production, and Recycling Rates",
+        "year": "2024",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Our group developed a structured proposal for a data analysis project analyzing the relationship between country GDP, resource consumption, plastic waste production, and recycling rates. We also designed a methodology for data collection, wrangling, visualization, and analysis, including merging real datasets found from Kaggle."
     },
     {
-        "title": "Libero aspernatur voluptatibus corporis!",
+        "title": "Image Classification with K-Nearest Neighbors",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Fugit inventore optio illo, sunt eum aliquam, totam quia quasi eveniet minus quidem eius earum ullam quaerat amet numquam provident voluptates accusantium, impedit magni cumque quae? Voluptatem facere alias maxime."
+        "description": "I implemented an image classification system from scratch using the K-Nearest Neighbors algorithm. I wrote functions to process RGB images, compute pixel-level distances, and predict labels based on nearest neighbors. I optimized my implementation for clarity and efficiency while ensuring accurate classification results across test images."
     },
     {
-        "title": "Eius eligendi culpa libero?",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Distinctio nobis aut pariatur animi nostrum est, temporibus suscipit qui itaque rem? Quisquam perferendis laudantium excepturi, nostrum voluptatem molestiae repudiandae laboriosam incidunt quis deleniti quod autem est quo corporis possimus."
+        "title": "Exploring Meteorite Landings with NASA Data",
+        "year": "2023",
+        "image": "images\\output.png",
+        "description": "This project explores NASA’s Meteorite Landings dataset to uncover patterns in meteorite discoveries around the world. Using Python (Pandas, NumPy, and visualization libraries), I cleaned and analyzed over 45,000 recorded landings to identify trends in geographic distribution, classification types, and changes over time. I also examined data accuracy by comparing “seen” vs. “recorded” events and visualized global meteorite impact sites."
     },
     {
-        "title": "Vero suscipit perferendis officiis!",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Natus at molestias quasi facilis rem. Architecto, animi impedit. Officiis tempore alias dolores nesciunt. Necessitatibus minus dignissimos consectetur iure ipsa dolores facere ex officia ducimus iusto, impedit omnis? Quia, iure?"
-    },
-    {
-        "title": "Dicta cum at architecto.",
+        "title": "Placeholder Project",
+        "year": "2026",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Omnis, illo atque iure nobis eos ea veniam. Veniam, in voluptatibus pariatur delectus, porro consectetur temporibus dignissimos et earum similique exercitationem consequuntur placeat quasi mollitia sint maxime. Eos, deserunt? Ab."
     },
     {
-        "title": "Repellat ducimus fugiat minima.",
+        "title": "Placeholder Project",
+        "year": "2026",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Quam illo distinctio rerum ab ipsum aperiam recusandae tenetur numquam velit voluptas amet pariatur, sed qui! Eveniet, reiciendis est vitae quae consequuntur in impedit. Quia, ad eligendi? Aliquid, assumenda tenetur!"
     }
