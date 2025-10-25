@@ -97,9 +97,9 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     for (const project of projects) {
         const article = document.createElement('article');
 
-        let imagePath = project.image || '';
+        let imagePath = project.image;
         if (imagePath.startsWith('../')) {
-            console.log('IT’S ALIVE!');
+            //console.log('IT’S ALIVE!');
             imagePath = imagePath.replace('../', '');
         }
 
