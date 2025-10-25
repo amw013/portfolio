@@ -10,3 +10,5 @@ let currentLink = navLinks.find(
 );
 
 currentLink?.classList.add('current');
+
+console.log(currentLink);
