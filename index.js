@@ -1,4 +1,4 @@
-import { fetchJSON, renderProjects } from './global.js';
+import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
 
 const projects = await fetchJSON('./lib/projects.json');
 
@@ -8,7 +8,7 @@ const projectsContainer = document.querySelector('.projects');
 
 renderProjects(latestProjects, projectsContainer, 'h2');
 
-const githubData = await fetchGitHubData('your-github-username');
+const githubData = await fetchGitHubData('amw013');
 
 const profileStats = document.querySelector('#profile-stats');
 
