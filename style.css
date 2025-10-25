@@ -114,3 +114,66 @@ form button {
 .projects article h2 {
     margin: 0; 
 }
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.1;       
+    text-wrap: balance;     
+    margin: 0.5em 0;        
+}
+
+
+h1 {
+    font-size: 4em;         
+}
+
+main.resume {
+    max-width: 60ch;      
+    margin-inline: auto;  
+    padding: 1em;
+}
+
+
+main.resume h1, main.resume h2, main.resume h3 {
+    line-height: 1.1;
+    text-wrap: balance;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+main.resume h1 {
+    font-size: 3.5em;      
+}
+
+main.resume h2 {
+    font-size: 2em;
+}
+
+main.resume h3 {
+    font-size: 1.5em;
+}
+
+main.resume section {
+    margin-bottom: 2em;
+}
+
+main.resume section article {
+    margin-bottom: 1em;
+}
+
+main.resume ul {
+    margin: 0.5em 0 1em 1.5em;
+}
+
+main.resume a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+main.resume a:hover {
+    text-decoration: underline;
+}
+
+main.resume time {
+    font-style: italic;
+    color: gray;
+}
