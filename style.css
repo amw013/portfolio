@@ -108,7 +108,7 @@ h1 {
 }
 
 main.resume {
-    max-width: 60ch;      
+    max-width: min(80ch, 90%);      
     margin-inline: auto;  
     padding: 1em;
 }
