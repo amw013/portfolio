@@ -68,3 +68,42 @@ function setColorScheme(colorScheme) {
 if ('colorScheme' in localStorage) {
     setColorScheme(localStorage.colorScheme);
 }
+
+export async function fetchJSON(url) {
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch projects: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+
+    console.log(data);
+
+    return data;
+  } catch (error) {
+    console.error('Error fetching or parsing JSON data:', error);
+  }
+}
+
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+    if (!containerElement) {
+        console.error('Container element is missing or invalid');
+        return;
+    }
+    containerElement.innerHTML = '';
+
+    for (const project of projects) {
+        const article = document.createElement('article');
+
+        const headingTag = /^[hH][1-6]$/.test(headingLevel) ? headingLevel : 'h2';
+        article.innerHTML = `
+            <${headingTag}>${project.title || 'Untitled Project'}</${headingTag}>
+            <img src="${project.image || ''}" alt="${project.title || 'Project Image'}">
+            <p>${project.description || 'No description provided.'}</p>
+        `;
+
+        containerElement.appendChild(article);
+    }
+}
