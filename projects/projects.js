@@ -4,7 +4,7 @@ const projectsContainer = document.querySelector('.projects');
 
 const projectsTitle = document.querySelector('.projects-title');
 
-projectsTitle.textContent = `Projects (${projects.length})`;
+projectsTitle.textContent = `${projects.length} Projects`;
 
 
 renderProjects(projects, projectsContainer, 'h2');
