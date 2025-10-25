@@ -56,25 +56,6 @@ button {
   font: inherit;
 }
 
-/*form label,
-form input,
-form textarea,
-form button {
-  display: block;
-}
-
-form input,
-form textarea,
-form button {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-form label {
-  margin-block: 0.5em;
-}
-*/
-
 form {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -134,10 +115,10 @@ main.resume {
 
 
 main.resume h1, main.resume h2, main.resume h3 {
-    line-height: 1.1;
-    text-wrap: balance;
-    margin-top: 1em;
-    margin-bottom: 0.5em;
+    line-height: 1.1 !important;
+    text-wrap: balance !important;
+    margin-top: 1em !important;
+    margin-bottom: 0.5em !important;
 }
 
 main.resume h1 {
