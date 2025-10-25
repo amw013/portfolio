@@ -97,6 +97,11 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     for (const project of projects) {
         const article = document.createElement('article');
 
+        let imagePath = project.image || '';
+        if (imagePath.startsWith('../')) {
+            imagePath = imagePath.replace('../', './');
+        }
+
         const headingTag = /^[hH][1-6]$/.test(headingLevel) ? headingLevel : 'h2';
         article.innerHTML = `
             <${headingTag}>${project.title || 'Untitled Project'}</${headingTag}>
@@ -108,25 +113,8 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     }
 }
 
+
 export async function fetchGitHubData(username) {
   return fetchJSON(`https://api.github.com/users/${username}`);
 }
 
-export function renderProjects(projects, container, headingLevel = 'h2') {
-  if (!container) return;
-
-  container.innerHTML = projects.map(project => {
-    let imagePath = project.image;
-    if (imagePath.startsWith('../')) {
-      imagePath = imagePath.replace('../', './');
-    }
-
-    return `
-      <article>
-        <${headingLevel}>${project.title}</${headingLevel}>
-        <img src="${imagePath}" alt="${project.title}">
-        <p>${project.description}</p>
-      </article>
-    `;
-  }).join('');
-}
