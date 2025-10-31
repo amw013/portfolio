@@ -194,7 +194,7 @@ label.color-scheme select {
 
 .container {
   display: flex;           
-  align-items: flex-start; 
+  align-items: center; 
   gap: 2em;                
   flex-wrap: wrap;         
 }
