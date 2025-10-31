@@ -101,7 +101,7 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
         
         if (imagePath && imagePath.startsWith('../') && location.pathname == '/portfolio/') {
           console.log('hi')
-          imagePath = imagePath.replace('../', 'projects/');
+          imagePath = imagePath.replace('../', '');
         }
 
         const headingTag = /^[hH][1-6]$/.test(headingLevel) ? headingLevel : 'h2';

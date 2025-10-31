@@ -23,4 +23,3 @@ if (profileStats) {
   `;
 }
 
-console.log(location.pathname)
