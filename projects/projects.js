@@ -15,17 +15,17 @@ let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 let arc = arcGenerator({ startAngle: 0, endAngle: 2 * Math.PI });
 d3.select('svg').append('path').attr('d', arc).attr('fill', 'red');
 
-let data = [1, 2];
+let data = [1, 2, 3, 4, 5, 5];
 
 
 let sliceGenerator = d3.pie();
 const arcData = sliceGenerator(data); 
 const arcs = arcData.map(d => arcGenerator(d));
 
-const colors = ['gold', 'purple'];
+let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
 arcs.forEach((arc, idx) => {
   d3.select('#projects-pie-plot')
     .attr('d', arc)
-    .attr('fill', colors[idx]);
+    .attr('fill', colors(idx));
 });
