@@ -98,9 +98,9 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
         const article = document.createElement('article');
 
         let imagePath = project.image;
-        // if (imagePath && imagePath.startsWith('../')) {
-        //     imagePath = imagePath.replace('../', '');
-        // }
+        if (imagePath && imagePath.startsWith('../') && location.pathname == '/index.html') {
+            imagePath = imagePath.replace('../', '');
+        }
 
         const headingTag = /^[hH][1-6]$/.test(headingLevel) ? headingLevel : 'h2';
 
