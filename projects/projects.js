@@ -10,7 +10,6 @@ projectsTitle.textContent = `${projects.length} Projects`;
 renderProjects(projects, projectsContainer, 'h2');
 
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
-import projects from './projects-data.js';
 
 let rolledData = d3.rollups(
   projects,
