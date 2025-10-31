@@ -22,3 +22,5 @@ if (profileStats) {
     </dl>
   `;
 }
+
+console.log(location.pathname)
