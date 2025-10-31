@@ -11,7 +11,7 @@ renderProjects(projects, projectsContainer, 'h2');
 
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
-function updatePieChart(projects) {
+function renderPieChart(projects) {
   d3.select('#projects-pie-plot').selectAll('*').remove();
   d3.select('.legend').selectAll('*').remove();
 
@@ -50,9 +50,11 @@ function updatePieChart(projects) {
 
 }
 
+renderPieChart(projects)
 
 let query = '';
 const searchInput = document.querySelector('.searchBar');
+
 
 searchInput.addEventListener('input', (event) => {
     query = event.target.value.toLowerCase();
@@ -63,8 +65,6 @@ searchInput.addEventListener('input', (event) => {
     });
 
     renderProjects(filteredProjects, projectsContainer, 'h2');
-    updatePieChart(filteredProjects);
+    renderPieChart(filteredProjects);
 });
 
-renderProjects(projects, projectsContainer, 'h2');
-updatePieChart(projects);
