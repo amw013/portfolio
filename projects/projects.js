@@ -11,37 +11,36 @@ renderProjects(projects, projectsContainer, 'h2');
 
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
-document.addEventListener('DOMContentLoaded', () => {
-  let data = [
-    { value: 1, label: 'apples' },
-    { value: 2, label: 'oranges' },
-    { value: 3, label: 'mangos' },
-    { value: 4, label: 'pears' },
-    { value: 5, label: 'limes' },
-    { value: 5, label: 'cherries' },
-  ];
+let data = [
+  { value: 1, label: 'apples' },
+  { value: 2, label: 'oranges' },
+  { value: 3, label: 'mangos' },
+  { value: 4, label: 'pears' },
+  { value: 5, label: 'limes' },
+  { value: 5, label: 'cherries' },
+];
 
-  let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
-  let sliceGenerator = d3.pie().value(d => d.value);
+let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 
-  const arcData = sliceGenerator(data);   
-  const arcs = arcData.map(d => arcGenerator(d));
+let sliceGenerator = d3.pie().value(d => d.value);
 
-  let colors = d3.scaleOrdinal(d3.schemeTableau10);
+const arcData = sliceGenerator(data);   
+const arcs = arcData.map(d => arcGenerator(d));
 
-  arcs.forEach((arc, idx) => {
-    d3.select('#projects-pie-plot')
-      .append('path')
-      .attr('d', arc)       
-      .attr('fill', colors(idx));
-  });
+let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
-  let legend = d3.select('.legend');
+arcs.forEach((arc, idx) => {
+  d3.select('#projects-pie-plot')
+    .append('path')
+    .attr('d', arc)       
+    .attr('fill', colors(idx));
+});
 
-  data.forEach((d, idx) => {
-    legend.append('li')
-      .attr('style', `--color:${colors(idx)}`)
-      .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`)
-      .attr('class', 'legend-item');
-  });
+let legend = d3.select('.legend');
+
+data.forEach((d, idx) => {
+  legend.append('li')
+    .attr('style', `--color:${colors(idx)}`) // store the slice color in a CSS variable
+    .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`)
+    .attr('class', 'legend-item');
 });
