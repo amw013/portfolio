@@ -191,3 +191,28 @@ label.color-scheme select {
 
   overflow: visible;
 }
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 1em;
+  list-style: none;
+  padding: 0;
+  margin: 1em 0;
+  border: 1px solid #ccc;
+  padding: 1em;
+  border-radius: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.legend-item .swatch {
+  width: 1em;
+  height: 1em;
+  background-color: var(--color);
+  border-radius: 3px;
+}
