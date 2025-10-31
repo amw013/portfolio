@@ -99,7 +99,7 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
 
         let imagePath = project.image;
         
-        if (imagePath && imagePath.startsWith('../') && location.pathname == '/index.html') {
+        if (imagePath && imagePath.startsWith('../') && location.pathname == '/portfolio/') {
           console.log('hi')
           imagePath = imagePath.replace('../', 'projects/');
         }
