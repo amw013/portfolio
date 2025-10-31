@@ -98,16 +98,19 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
         const article = document.createElement('article');
 
         let imagePath = project.image;
-        if (imagePath.startsWith('../')) {
-            //console.log('IT’S ALIVE!');
+        if (imagePath && imagePath.startsWith('../')) {
             imagePath = imagePath.replace('../', '');
         }
 
         const headingTag = /^[hH][1-6]$/.test(headingLevel) ? headingLevel : 'h2';
+
         article.innerHTML = `
             <${headingTag}>${project.title || 'Untitled Project'}</${headingTag}>
-            <img src="${project.image || ''}" alt="${project.title || 'Project Image'}">
-            <p>${project.description || 'No description provided.'}</p>
+            <img src="${imagePath || ''}" alt="${project.title || 'Project Image'}">
+            <div class="project-info">
+                <p>${project.description || 'No description provided.'}</p>
+                <p class="year">${project.year || ''}</p>
+            </div>
         `;
 
         containerElement.appendChild(article);

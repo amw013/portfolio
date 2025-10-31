@@ -176,3 +176,18 @@ label.color-scheme select {
     font: inherit;
     padding: 0.2em 0.4em;
 }
+
+.project-info .year {
+  color: gray;
+  font-family: Baskerville, serif;
+  font-variant-numeric: oldstyle-nums;
+  font-size: 0.9em;
+  margin-top: 0.25em;
+}
+
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+
+  overflow: visible;
+}
