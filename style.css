@@ -223,3 +223,23 @@ label.color-scheme select {
   background-color: var(--color);
   border-radius: 3px;
 }
+
+#projects-pie-plot path {
+  transition: opacity 300ms; 
+  cursor: pointer;        
+}
+
+#projects-pie-plot:has(path:hover) path:not(:hover):not(.selected) {
+  opacity: 0.5;
+}
+
+#projects-pie-plot path.selected,
+.legend-item.selected .swatch {
+  --color: oklch(60% 45% 0) !important;
+  fill: var(--color); /* for path */
+}
+
+path {
+  cursor: pointer;       
+  transition: opacity 300ms;
+}

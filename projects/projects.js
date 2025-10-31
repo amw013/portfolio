@@ -6,6 +6,7 @@ const projectsTitle = document.querySelector('.projects-title');
 
 projectsTitle.textContent = `${projects.length} Projects`;
 
+let selectedIndex = -1;
 
 renderProjects(projects, projectsContainer, 'h2');
 
@@ -16,9 +17,9 @@ function renderPieChart(projects) {
   d3.select('.legend').selectAll('*').remove();
 
     const rolledData = d3.rollups(
-    projects,
-    v => v.length,  
-    d => d.year    
+        projects,
+        v => v.length,  
+        d => d.year    
     );
 
     const data = rolledData.map(([year, count]) => ({ value: count, label: year }));
@@ -28,22 +29,70 @@ function renderPieChart(projects) {
     const arcData = sliceGenerator(data);   
     const arcs = arcData.map(d => arcGenerator(d));
     
-    let colors = d3.scaleOrdinal(d3.schemeTableau10);
+    const colors = d3.scaleOrdinal(d3.schemeTableau10);
 
-    arcs.forEach((arc, idx) => {
-    d3.select('#projects-pie-plot')
-        .append('path')
-        .attr('d', arc)       
-        .attr('fill', colors(idx));
-    });
+    arcs.forEach((arc, i) => {
+        d3.select('#projects-pie-plot')
+            .append('path')
+            .attr('d', arc)
+            .attr('fill', colors(i))
+            .attr('class', i === selectedIndex ? 'selected' : '')
+            .on('click', () => {
+                selectedIndex = selectedIndex === i ? -1 : i;
+                
+                let filteredProjects = selectedIndex === -1
+                    ? projects
+                    : projects.filter(p => p.year === data[selectedIndex].label);
+
+                renderProjects(filteredProjects, projectsContainer, 'h2');
+
+                // Update wedges
+                d3.select('#projects-pie-plot')
+                    .selectAll('path')
+                    .attr('class', (_, idx) => (idx === selectedIndex ? 'selected' : ''));
+
+                // Update legend
+                d3.select('.legend')
+                    .selectAll('li')
+                    .attr('class', (_, idx) =>
+                        idx === selectedIndex ? 'legend-item selected' : 'legend-item'
+                    );
+
+                // d3.select('#projects-pie-plot')
+                //     .selectAll('path')
+                //     .attr('class', (_, idx) => (idx === selectedIndex ? 'selected' : ''));
+
+                // d3.select('.legend')
+                //     .selectAll('li')
+                //     .attr('class', (_, idx) => (idx === selectedIndex ? 'legend-item selected' : 'legend-item'));
+            });
+        });
+
 
     const legend = d3.select('.legend');
     data.forEach((d, idx) => {
     legend
         .append('li')
         .attr('style', `--color:${colors(idx)}`)
-        .attr('class', 'legend-item')
-        .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+        .attr('class', idx === selectedIndex ? 'legend-item selected' : 'legend-item')
+        .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`)
+        .on('click', () => {
+                selectedIndex = selectedIndex === idx ? -1 : idx;
+
+                let filteredProjects = selectedIndex === -1
+                    ? projects
+                    : projects.filter(p => p.year === data[selectedIndex].label);
+
+                renderProjects(filteredProjects, projectsContainer, 'h2');
+
+                d3.select('#projects-pie-plot')
+                    .selectAll('path')
+                    .attr('class', (_, i) => (i === selectedIndex ? 'selected' : ''));
+
+                d3.select('.legend')
+                    .selectAll('li')
+                    .attr('class', (_, i) => i === selectedIndex ? 'legend-item selected' : 'legend-item');
+            });
     });
 
     
