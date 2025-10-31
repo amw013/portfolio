@@ -192,15 +192,22 @@ label.color-scheme select {
   overflow: visible;
 }
 
+.container {
+  display: flex;           
+  align-items: flex-start; 
+  gap: 2em;                
+  flex-wrap: wrap;         
+}
+
 .legend {
+  flex: 1;                 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
   gap: 1em;
   list-style: none;
-  padding: 0;
-  margin: 1em 0;
-  border: 1px solid #ccc;
   padding: 1em;
+  margin: 0;
+  border: 1px solid #ccc;
   border-radius: 8px;
 }
 
