@@ -153,7 +153,7 @@ function renderSelectionCount(selection, commits, xScale, yScale) {
   return selectedCommits;
 }
 
-function renderLanguageBreakdown(selection) {
+function renderLanguageBreakdown(selection, commits, xScale, yScale) {
   const selectedCommits = selection
     ? commits.filter((d) => isCommitSelected(selection, d, xScale, yScale))
     : [];
@@ -194,7 +194,7 @@ function brushed(event, xScale, yScale) {
     .classed('selected', (d) => isCommitSelected(selection, d, xScale, yScale));
 
   renderSelectionCount(selection, commits, xScale, yScale);
-  renderLanguageBreakdown(selection);
+  renderLanguageBreakdown(selection, commits, xScale, yScale);
 }
 
 
