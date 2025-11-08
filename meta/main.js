@@ -46,23 +46,34 @@ function processCommits(data) {
 }
 
 function renderCommitInfo(data, commits) {
+  // Clear previous content
   d3.select('#stats').selectAll('*').remove();
 
+  // Card wrapper
   const card = d3.select('#stats')
     .append('div')
     .attr('class', 'stats-card');
 
   const dl = card.append('dl').attr('class', 'stats');
 
-  dl.append('dt').html('Total Lines of Code');
-  dl.append('dd').text(data.length);
+  // Helper function to ensure dt + dd stay together
+  function addStat(label, value) {
+    const stat = dl.append('div').attr('class', 'stat');
+    stat.append('dt').html(label);
+    stat.append('dd').text(value);
+  }
 
-  dl.append('dt').text('Total commits');
-  dl.append('dd').text(commits.length);
+  // --- Stats ---
+
+  addStat(
+    'Total <abbr title="Lines of code">LOC</abbr>',
+    data.length
+  );
+
+  addStat('Total commits', commits.length);
 
   const numFiles = d3.groups(data, d => d.file).length;
-  dl.append('dt').text('Number of files');
-  dl.append('dd').text(numFiles);
+  addStat('Number of files', numFiles);
 
   const fileLengths = d3.rollups(
     data,
@@ -70,12 +81,10 @@ function renderCommitInfo(data, commits) {
     d => d.file
   );
   const longestFile = d3.greatest(fileLengths, d => d[1])?.[0];
-  dl.append('dt').text('Longest file');
-  dl.append('dd').text(longestFile);
+  addStat('Longest file', longestFile);
 
-  const avgLineLength = d3.mean(data, d => d.length);
-  dl.append('dt').text('Average line length (chars)');
-  dl.append('dd').text(avgLineLength.toFixed(1));
+  const avgLineLength = d3.mean(data, d => d.length).toFixed(1);
+  addStat('Average line length (chars)', avgLineLength);
 
   const workByPeriod = d3.rollups(
     data,
@@ -83,9 +92,9 @@ function renderCommitInfo(data, commits) {
     d => new Date(d.datetime).toLocaleString('en', { dayPeriod: 'short' })
   );
   const maxPeriod = d3.greatest(workByPeriod, d => d[1])?.[0];
-  dl.append('dt').text('Most active time of day');
-  dl.append('dd').text(maxPeriod);
+  addStat('Most active time of day', maxPeriod);
 }
+
 
 function renderScatterPlot(data, commits) {
   const width = 1000;

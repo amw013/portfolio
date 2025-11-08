@@ -281,43 +281,42 @@ path {
   background-color: color-mix(in oklch, var(--color-accent) 10%, canvas 15%);
 } */
 
-/* Shared stats layout */
-
-.stats-card {
-  background-color: color-mix(in oklch, var(--color-accent) 5%, canvas 98%);
-  border: 1px solid color-mix(in oklch, var(--color-accent) 20%, canvas 70%);
-  padding: 1.5em;
-  border-radius: 0.75em;
-  max-width: 40rem;
-  margin: 2em 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  font-family: "Inter", "Helvetica Neue", sans-serif;
-}
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  gap: 1.25em 2em;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.5em;
+  margin: 2em 0;
+}
+
+.stats .stat {
+  display: flex;
+  flex-direction: column;
 }
 
 .stats dt {
-  font-size: 0.8em;
+  font-size: 0.85em;
   font-weight: 600;
-  color: color-mix(in oklch, var(--color-accent), canvas 40%);
   margin-bottom: 0.25em;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  opacity: 0.75;
+  color: color-mix(in oklch, var(--color-accent), canvas 40%);
 }
 
 .stats dd {
   margin: 0;
-  font-size: 1.6em;
+  font-size: 1.8em;
   font-weight: 600;
   color: var(--text-color, inherit);
-  font-family: "Inter", "Helvetica Neue", sans-serif;
+}
+
+.stats-card {
+  background-color: color-mix(in oklch, var(--color-accent) 8%, canvas 94%);
+  padding: 1.5em;
+  border-radius: 0.75em;
+  box-shadow: 0 3px 7px rgba(0,0,0,0.08);
+  transition: background-color 200ms ease;
 }
 
 [data-theme="dark"] .stats-card {
-  background-color: color-mix(in oklch, var(--color-accent) 7%, canvas 20%);
-  border-color: color-mix(in oklch, var(--color-accent) 30%, canvas 40%);
+  background-color: color-mix(in oklch, var(--color-accent) 10%, canvas 20%);
 }
