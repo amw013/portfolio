@@ -320,3 +320,7 @@ path {
 [data-theme="dark"] .stats-card {
   background-color: color-mix(in oklch, var(--color-accent) 10%, canvas 20%);
 }
+
+.gridlines line {
+  shape-rendering: crispEdges;
+}

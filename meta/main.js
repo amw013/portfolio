@@ -66,7 +66,7 @@ function renderCommitInfo(data, commits) {
   // --- Stats ---
 
   addStat(
-    'Total <abbr title="Lines of code">LOC</abbr>',
+    'Total Lines of Code',
     data.length
   );
 
@@ -100,6 +100,9 @@ function renderScatterPlot(data, commits) {
   const width = 1000;
   const height = 600;
   const margin = { top: 40, right: 40, bottom: 60, left: 80 };
+  const gridColorScale = d3.scaleLinear()
+  .domain([0, 12, 24]) // midnight → noon → midnight
+  .range(['#1e3a8a', '#f59e0b', '#1e3a8a']);
 
   d3.select('#chart').selectAll('*').remove();
 
@@ -159,6 +162,24 @@ function renderScatterPlot(data, commits) {
     .attr('r', 5)
     .attr('fill', 'steelblue')
     .attr('opacity', 0.7);
+
+    const gridlines = svg
+        .append('g')
+        .attr('class', 'gridlines')
+        .attr('transform', `translate(${usableArea.left}, 0)`);
+
+    yScale.ticks(25).forEach(hour => {
+    gridlines.append('line')
+        .attr('x1', 0)
+        .attr('x2', usableArea.width)
+        .attr('y1', yScale(hour))
+        .attr('y2', yScale(hour))
+        .attr('stroke', gridColorScale(hour))
+        .attr('stroke-width', 0.5)
+        .attr('opacity', 0.3);
+    });
+
+
 }
 
 
