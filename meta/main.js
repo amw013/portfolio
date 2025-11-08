@@ -81,8 +81,60 @@ function renderCommitInfo(data, commits) {
   dl.append('dd').text(maxPeriod);
 }
 
+function renderScatterPlot(data, commits) {
+  const width = 1000;
+  const height = 600;
+  const margin = { top: 40, right: 40, bottom: 60, left: 80 };
+
+  d3.select('#chart').selectAll('*').remove();
+
+  const svg = d3
+    .select('#chart')
+    .append('svg')
+    .attr('viewBox', `0 0 ${width} ${height}`)
+    .style('overflow', 'visible');
+
+  const xScale = d3
+    .scaleTime()
+    .domain(d3.extent(commits, (d) => d.datetime))
+    .range([margin.left, width - margin.right])
+    .nice();
+
+  const yScale = d3.scaleLinear().domain([0, 24]).range([height - margin.bottom, margin.top]);
+
+  const xAxis = d3.axisBottom(xScale).tickFormat(d3.timeFormat('%b %d'));
+  const yAxis = d3.axisLeft(yScale);
+
+  svg.append('g')
+    .attr('transform', `translate(0, ${height - margin.bottom})`)
+    .call(xAxis)
+    .selectAll("text")
+    .attr("transform", "rotate(-45)")
+    .style("text-anchor", "end");
+
+  svg.append('g')
+    .attr('transform', `translate(${margin.left}, 0)`)
+    .call(yAxis)
+    .append('text')
+    .attr('fill', 'black')
+    .attr('x', -margin.left)
+    .attr('y', margin.top - 20)
+    .text('Hour of day');
+
+  svg.append('g')
+    .attr('class', 'dots')
+    .selectAll('circle')
+    .data(commits)
+    .join('circle')
+    .attr('cx', (d) => xScale(d.datetime))
+    .attr('cy', (d) => yScale(d.hourFrac))
+    .attr('r', 5)
+    .attr('fill', 'steelblue')
+    .attr('opacity', 0.7);
+}
+
 
 let data = await loadData();
 let commits = processCommits(data);
 renderCommitInfo(data, commits);
-
+renderScatterPlot(data, commits);
