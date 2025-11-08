@@ -157,34 +157,32 @@ function renderLanguageBreakdown(selection, commits, xScale, yScale) {
   const selectedCommits = selection
     ? commits.filter((d) => isCommitSelected(selection, d, xScale, yScale))
     : [];
+
   const container = document.getElementById('language-breakdown');
+  container.innerHTML = ''; // Clear previous content
 
-  if (selectedCommits.length === 0) {
-    container.innerHTML = '';
-    return;
-  }
+  if (selectedCommits.length === 0) return;
 
-  const requiredCommits = selectedCommits.length ? selectedCommits : commits;
-  const lines = requiredCommits.flatMap((d) => d.lines);
-
+  const lines = selectedCommits.flatMap(d => d.lines);
   const breakdown = d3.rollup(
     lines,
-    (v) => v.length,
-    (d) => d.type
+    v => v.length,
+    d => d.type
   );
-
-  container.innerHTML = '';
 
   for (const [language, count] of breakdown) {
     const proportion = count / lines.length;
     const formatted = d3.format('.1~%')(proportion);
 
     container.innerHTML += `
-      <dt>${language}</dt>
-      <dd>${count} lines (${formatted})</dd>
+      <div>
+        <dt>${language}</dt>
+        <dd>${count} lines (${formatted})</dd>
+      </div>
     `;
   }
 }
+
 
 
 function brushed(event, xScale, yScale) {

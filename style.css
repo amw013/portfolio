@@ -397,3 +397,24 @@ circle.selected {
   stroke-dasharray: 5 3;
   animation: marching-ants 2s linear infinite;
 }
+
+.language-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  text-align: center; /* Center all text */
+  margin-top: 1rem;
+}
+
+.language-stats dt {
+  font-size: 1.2rem; /* Larger text for the language */
+  font-weight: bold;
+  color: #ff8aa0; /* Less light pink accent */
+  margin-bottom: 0.2rem;
+}
+
+.language-stats dd {
+  font-size: 1rem;
+  margin: 0;
+  color: #333;
+}
