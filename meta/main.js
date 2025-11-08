@@ -264,7 +264,10 @@ function renderScatterPlot(data, commits) {
 
   const sortedCommits = commits.slice().sort((a, b) => b.totalLines - a.totalLines);
 
-  
+  const brush = d3.brush()
+    .on('start brush end', (event) => brushed(event, xScale, yScale));
+
+  svg.call(brush);
 
   dots.selectAll('circle')
     .data(sortedCommits)
@@ -286,11 +289,8 @@ function renderScatterPlot(data, commits) {
         updateTooltipVisibility(false);
     });
 
-  const brush = d3.brush()
-    .on('start brush end', (event) => brushed(event, xScale, yScale));
-
-  svg.call(brush);
-  svg.selectAll('.dots, .overlay ~ *').raise();
+  
+  svg.select('.dots').raise();
 
 
 }
