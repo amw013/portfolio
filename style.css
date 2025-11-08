@@ -266,7 +266,7 @@ path {
 }
 
 .stats dt + dd {
-  margin-bottom: 1em; /* space between entries */
+  margin-bottom: 1em;
 }
 
 .stats-card {
