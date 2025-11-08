@@ -97,15 +97,22 @@ function renderCommitInfo(data, commits) {
 
 function renderTooltipContent(commit) {
   if (!commit) return;
-  document.getElementById('commit-link').href = commit.url;
-  document.getElementById('commit-link').textContent = commit.id;
-  document.getElementById('commit-date').textContent =
-    commit.datetime?.toLocaleString('en', { dateStyle: 'full' });
-  document.getElementById('commit-time').textContent =
-    commit.datetime?.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' });
-  document.getElementById('commit-author').textContent = commit.author;
-  document.getElementById('commit-lines').textContent = commit.totalLines;
+
+  const link = document.getElementById('commit-link');
+  const date = document.getElementById('commit-date');
+  const time = document.getElementById('commit-time');
+  const author = document.getElementById('commit-author');
+  const lines = document.getElementById('commit-lines');
+
+  link.href = commit.url;
+  link.textContent = commit.id;
+
+  date.textContent = commit.datetime?.toLocaleString('en', { dateStyle: 'full' });
+  time.textContent = commit.datetime?.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' });
+  author.textContent = commit.author;
+  lines.textContent = commit.totalLines;
 }
+
 
 
 function updateTooltipVisibility(isVisible) {
@@ -129,6 +136,9 @@ function renderScatterPlot(data, commits) {
   const width = 1000;
   const height = 600;
   const margin = { top: 40, right: 40, bottom: 60, left: 80 };
+
+  const [minLines, maxLines] = d3.extent(commits, d => d.totalLines);
+  const rScale = d3.scaleLinear().domain([minLines, maxLines]).range([2, 20]);
 
   d3.select('#chart').selectAll('*').remove();
 
@@ -186,22 +196,23 @@ function renderScatterPlot(data, commits) {
 
   const dots = svg.append('g').attr('class', 'dots');
 
-  dots
-    .selectAll('circle')
+  dots.selectAll('circle')
     .data(commits)
     .join('circle')
     .attr('cx', d => xScale(d.datetime))
     .attr('cy', d => yScale(d.hourFrac))
-    .attr('r', 5)
+    .attr('r', d => rScale(d.totalLines)) // use scaled radius
     .attr('fill', 'steelblue')
+    .style('fill-opacity', 0.7)
     .on('mouseenter', (event, commit) => {
+        d3.select(event.currentTarget).style('fill-opacity', 1);
         renderTooltipContent(commit);
         updateTooltipVisibility(true);
-    })
-    .on('mousemove', (event) => {
         updateTooltipPosition(event);
     })
-    .on('mouseleave', () => {
+    .on('mousemove', (event) => updateTooltipPosition(event))
+    .on('mouseleave', (event) => {
+        d3.select(event.currentTarget).style('fill-opacity', 0.7);
         updateTooltipVisibility(false);
     });
 }
