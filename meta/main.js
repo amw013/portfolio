@@ -125,10 +125,17 @@ function updateTooltipVisibility(isVisible) {
 
 function updateTooltipPosition(event) {
   const tooltip = document.getElementById('commit-tooltip');
+  const svg = document.querySelector('#chart svg');
+
+  const [x, y] = d3.pointer(event, svg);
+
   const offsetX = 10;
   const offsetY = 10;
-  tooltip.style.left = `${event.clientX + offsetX}px`;
-  tooltip.style.top = `${event.clientY + offsetY}px`;
+
+  const svgRect = svg.getBoundingClientRect();
+
+  tooltip.style.left = `${svgRect.left + x + offsetX}px`;
+  tooltip.style.top = `${svgRect.top + y + offsetY}px`;
 }
 
 
