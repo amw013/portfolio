@@ -97,9 +97,6 @@ function renderCommitInfo(data, commits) {
 
 function renderTooltipContent(commit) {
   if (!commit) return;
-  const tooltip = document.getElementById('commit-tooltip');
-  tooltip.hidden = false;
-
   document.getElementById('commit-link').href = commit.url;
   document.getElementById('commit-link').textContent = commit.id;
   document.getElementById('commit-date').textContent =
@@ -113,8 +110,9 @@ function renderTooltipContent(commit) {
 
 function updateTooltipVisibility(isVisible) {
   const tooltip = document.getElementById('commit-tooltip');
-  tooltip.hidden = !isVisible;
+  tooltip.style.display = isVisible ? 'grid' : 'none';
 }
+
 
 
 
