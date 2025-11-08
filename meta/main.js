@@ -54,7 +54,7 @@ function renderCommitInfo(data, commits) {
 
   const dl = card.append('dl').attr('class', 'stats');
 
-  dl.append('dt').html('Total <abbr title="Lines of code">LOC</abbr>');
+  dl.append('dt').html('Total Lines of Code');
   dl.append('dd').text(data.length);
 
   dl.append('dt').text('Total commits');
