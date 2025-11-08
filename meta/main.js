@@ -46,7 +46,13 @@ function processCommits(data) {
 }
 
 function renderCommitInfo(data, commits) {
-  const dl = d3.select('#stats').append('dl').attr('class', 'stats');
+  d3.select('#stats').selectAll('*').remove();
+
+  const card = d3.select('#stats')
+    .append('div')
+    .attr('class', 'stats-card');
+
+  const dl = card.append('dl').attr('class', 'stats');
 
   dl.append('dt').html('Total <abbr title="Lines of code">LOC</abbr>');
   dl.append('dd').text(data.length);
@@ -88,6 +94,15 @@ function renderScatterPlot(data, commits) {
 
   d3.select('#chart').selectAll('*').remove();
 
+  const usableArea = {
+    top: margin.top,
+    right: width - margin.right,
+    bottom: height - margin.bottom,
+    left: margin.left,
+    width: width - margin.left - margin.right,
+    height: height - margin.top - margin.bottom,
+  };
+
   const svg = d3
     .select('#chart')
     .append('svg')
@@ -96,24 +111,28 @@ function renderScatterPlot(data, commits) {
 
   const xScale = d3
     .scaleTime()
-    .domain(d3.extent(commits, (d) => d.datetime))
-    .range([margin.left, width - margin.right])
+    .domain(d3.extent(commits, d => d.datetime))
+    .range([usableArea.left, usableArea.right])
     .nice();
 
-  const yScale = d3.scaleLinear().domain([0, 24]).range([height - margin.bottom, margin.top]);
+  const yScale = d3
+    .scaleLinear()
+    .domain([0, 24])
+    .range([usableArea.bottom, usableArea.top]);
 
   const xAxis = d3.axisBottom(xScale).tickFormat(d3.timeFormat('%b %d'));
-  const yAxis = d3.axisLeft(yScale);
+  const yAxis = d3.axisLeft(yScale)
+    .tickFormat(d => String(d % 24).padStart(2, '0') + ':00');
 
   svg.append('g')
-    .attr('transform', `translate(0, ${height - margin.bottom})`)
+    .attr('transform', `translate(0, ${usableArea.bottom})`)
     .call(xAxis)
-    .selectAll("text")
-    .attr("transform", "rotate(-45)")
-    .style("text-anchor", "end");
+    .selectAll('text')
+    .attr('transform', 'rotate(-45)')
+    .style('text-anchor', 'end');
 
   svg.append('g')
-    .attr('transform', `translate(${margin.left}, 0)`)
+    .attr('transform', `translate(${usableArea.left}, 0)`)
     .call(yAxis)
     .append('text')
     .attr('fill', 'black')
@@ -126,12 +145,13 @@ function renderScatterPlot(data, commits) {
     .selectAll('circle')
     .data(commits)
     .join('circle')
-    .attr('cx', (d) => xScale(d.datetime))
-    .attr('cy', (d) => yScale(d.hourFrac))
+    .attr('cx', d => xScale(d.datetime))
+    .attr('cy', d => yScale(d.hourFrac))
     .attr('r', 5)
     .attr('fill', 'steelblue')
     .attr('opacity', 0.7);
 }
+
 
 
 let data = await loadData();

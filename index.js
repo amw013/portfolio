@@ -1,25 +1,35 @@
 import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
 
-const projects = await fetchJSON('./lib/projects.json');
+function renderGitHubStats(githubData, container) {
+  if (!container) return;
 
-const latestProjects = projects.slice(0, 3);
+  container.innerHTML = '';
+  const dl = document.createElement('dl');
+  dl.classList.add('stats'); 
 
-const projectsContainer = document.querySelector('.projects');
+  Object.entries(githubData).forEach(([key, value]) => {
+    const label = key.replace(/([A-Z])/g, ' $1') 
+                     .replace(/^./, str => str.toUpperCase()); 
+    const dt = document.createElement('dt');
+    dt.textContent = label;
+    const dd = document.createElement('dd');
+    dd.textContent = value;
+    dl.append(dt, dd);
+  });
 
-renderProjects(latestProjects, projectsContainer, 'h2');
-
-const githubData = await fetchGitHubData('amw013');
-
-const profileStats = document.querySelector('#profile-stats');
-
-if (profileStats) {
-  profileStats.innerHTML = `
-    <dl>
-      <dt>Public Repos:</dt><dd>${githubData.public_repos}</dd>
-      <dt>Public Gists:</dt><dd>${githubData.public_gists}</dd>
-      <dt>Followers:</dt><dd>${githubData.followers}</dd>
-      <dt>Following:</dt><dd>${githubData.following}</dd>
-    </dl>
-  `;
+  container.appendChild(dl);
 }
 
+async function main() {
+  const projects = await fetchJSON('./lib/projects.json');
+  const latestProjects = projects.slice(0, 3);
+  const projectsContainer = document.querySelector('.projects');
+  renderProjects(latestProjects, projectsContainer, 'h2');
+
+  const githubData = await fetchGitHubData('amw013');
+  const profileStats = document.querySelector('#profile-stats');
+
+  renderGitHubStats(githubData, profileStats);
+}
+
+main();
