@@ -95,14 +95,42 @@ function renderCommitInfo(data, commits) {
   addStat('Most active time of day', maxPeriod);
 }
 
+function renderTooltipContent(commit) {
+  if (!commit) return;
+  const tooltip = document.getElementById('commit-tooltip');
+  tooltip.hidden = false;
+
+  document.getElementById('commit-link').href = commit.url;
+  document.getElementById('commit-link').textContent = commit.id;
+  document.getElementById('commit-date').textContent =
+    commit.datetime?.toLocaleString('en', { dateStyle: 'full' });
+  document.getElementById('commit-time').textContent =
+    commit.datetime?.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' });
+  document.getElementById('commit-author').textContent = commit.author;
+  document.getElementById('commit-lines').textContent = commit.totalLines;
+}
+
+
+function updateTooltipVisibility(isVisible) {
+  const tooltip = document.getElementById('commit-tooltip');
+  tooltip.hidden = !isVisible;
+}
+
+
+
+function updateTooltipPosition(event) {
+  const tooltip = document.getElementById('commit-tooltip');
+  const offsetX = 10;
+  const offsetY = 10;
+  tooltip.style.left = `${event.clientX + offsetX}px`;
+  tooltip.style.top = `${event.clientY + offsetY}px`;
+}
+
 
 function renderScatterPlot(data, commits) {
   const width = 1000;
   const height = 600;
   const margin = { top: 40, right: 40, bottom: 60, left: 80 };
-  const gridColorScale = d3.scaleLinear()
-  .domain([0, 12, 24]) // midnight → noon → midnight
-  .range(['#1e3a8a', '#f59e0b', '#1e3a8a']);
 
   d3.select('#chart').selectAll('*').remove();
 
@@ -132,6 +160,17 @@ function renderScatterPlot(data, commits) {
     .domain([0, 24])
     .range([usableArea.bottom, usableArea.top]);
 
+  // Gridlines
+  const gridlines = svg.append('g')
+    .attr('class', 'gridlines')
+    .attr('transform', `translate(${usableArea.left}, 0)`);
+
+  gridlines.call(
+    d3.axisLeft(yScale)
+      .tickFormat('')
+      .tickSize(-usableArea.width)
+  );
+
   const xAxis = d3.axisBottom(xScale).tickFormat(d3.timeFormat('%b %d'));
   const yAxis = d3.axisLeft(yScale)
     .tickFormat(d => String(d % 24).padStart(2, '0') + ':00');
@@ -145,15 +184,11 @@ function renderScatterPlot(data, commits) {
 
   svg.append('g')
     .attr('transform', `translate(${usableArea.left}, 0)`)
-    .call(yAxis)
-    .append('text')
-    .attr('fill', 'black')
-    .attr('x', -margin.left)
-    .attr('y', margin.top - 20)
-    .text('Hour of day');
+    .call(yAxis);
 
-  svg.append('g')
-    .attr('class', 'dots')
+  const dots = svg.append('g').attr('class', 'dots');
+
+  dots
     .selectAll('circle')
     .data(commits)
     .join('circle')
@@ -161,26 +196,19 @@ function renderScatterPlot(data, commits) {
     .attr('cy', d => yScale(d.hourFrac))
     .attr('r', 5)
     .attr('fill', 'steelblue')
-    .attr('opacity', 0.7);
-
-    const gridlines = svg
-        .append('g')
-        .attr('class', 'gridlines')
-        .attr('transform', `translate(${usableArea.left}, 0)`);
-
-    yScale.ticks(25).forEach(hour => {
-    gridlines.append('line')
-        .attr('x1', 0)
-        .attr('x2', usableArea.width)
-        .attr('y1', yScale(hour))
-        .attr('y2', yScale(hour))
-        .attr('stroke', gridColorScale(hour))
-        .attr('stroke-width', 0.5)
-        .attr('opacity', 0.3);
+    .on('mouseenter', (event, commit) => {
+        renderTooltipContent(commit);
+        updateTooltipVisibility(true);
+    })
+    .on('mousemove', (event) => {
+        updateTooltipPosition(event);
+    })
+    .on('mouseleave', () => {
+        updateTooltipVisibility(false);
     });
-
-
 }
+
+
 
 
 
