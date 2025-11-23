@@ -202,6 +202,20 @@ function brushed(event, xScale, yScale) {
   renderLanguageBreakdown(selection, commits, xScale, yScale);
 }
 
+function onTimeSliderChange() {
+  const slider = document.getElementById('commit-progress');
+  commitProgress = +slider.value;
+
+  commitMaxTime = timeScale.invert(commitProgress);
+
+  const t = document.getElementById('commit-time');
+  t.textContent = commitMaxTime.toLocaleString('en', {
+    dateStyle: "long",
+    timeStyle: "short",
+  });
+
+  console.log("Showing commits up to:", commitMaxTime);
+}
 
 
 function renderScatterPlot(data, commits) {
@@ -308,5 +322,22 @@ function renderScatterPlot(data, commits) {
 
 let data = await loadData();
 let commits = processCommits(data);
+let commitProgress = 100;
+
+let timeScale = d3.scaleTime()
+  .domain([
+    d3.min(commits, d => d.datetime),
+    d3.max(commits, d => d.datetime)
+  ])
+  .range([0, 100]);
+
+let commitMaxTime = timeScale.invert(commitProgress);
+
 renderCommitInfo(data, commits);
+
+document.getElementById('commit-progress')
+  .addEventListener('input', onTimeSliderChange);
+
+onTimeSliderChange();
+
 renderScatterPlot(data, commits);

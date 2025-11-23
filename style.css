@@ -431,3 +431,15 @@ circle.selected {
   margin: 0;
   color: #333;
 }
+
+.time-filter {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+#commit-time {
+  margin-left: auto;
+  font-weight: 500;
+}
