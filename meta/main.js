@@ -421,7 +421,8 @@ function renderScatterPlot(data, commits) {
 
 
 data = await loadData();
-commits = processCommits(data);
+commits = processCommits(data)
+  .sort((a, b) => a.datetime - b.datetime);
 
 timeScale = d3.scaleTime()
   .domain([
@@ -459,7 +460,7 @@ d3.select('#scatter-story')
     `;
   });
 
-  function onStepEnter(response) {
+function onStepEnter(response) {
   const commit = response.element.__data__;
   commitMaxTime = commit.datetime;
   filteredCommits = commits.filter(d => d.datetime <= commitMaxTime);
