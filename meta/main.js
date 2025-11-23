@@ -430,6 +430,6 @@ renderCommitInfo(data, commits);
 document.getElementById('commit-progress')
   .addEventListener('input', onTimeSliderChange);
 
-onTimeSliderChange();
 updateFileDisplay(commits);
 renderScatterPlot(data, commits);
+onTimeSliderChange();
