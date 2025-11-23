@@ -208,7 +208,7 @@ function onTimeSliderChange() {
   commitMaxTime = timeScale.invert(commitProgress);
   filteredCommits = commits.filter(d => d.datetime <= commitMaxTime);
 
-  document.getElementById('commit-max-time').textContent =
+  document.getElementById('commit-time').textContent =
     commitMaxTime.toLocaleString('en', {
       dateStyle: 'long',
       timeStyle: 'short'
