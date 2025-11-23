@@ -540,10 +540,18 @@ circle.selected {
   flex: 1;
 }
 
+/* #scatter-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+} */
+
 #scatter-column {
   flex: 1;
   display: flex;
   flex-direction: column;
+  height: 100vh; 
+  border: 1px solid red; 
 }
 
 #scatter-plot {
