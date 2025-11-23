@@ -170,9 +170,9 @@ function updateScatterPlot(data, commits) {
 
   const xAxis = d3.axisBottom(xScale).tickFormat(d3.timeFormat('%b %d'));
 
-  const xAxisGroup = svg.select('.x-axis');
-  xAxisGroup.selectAll('*').remove();
-  xAxisGroup.call(xAxis);
+  xAxisGroup.call(d3.axisBottom(xScale).tickFormat(d3.timeFormat('%b %d')));
+  yAxisGroup.call(d3.axisLeft(yScale).tickFormat(d => String(d % 24).padStart(2, '0') + ':00'));
+
 
   const dots = svg.select('g.dots');
 
@@ -206,38 +206,30 @@ function updateScatterPlot(data, commits) {
 }
 
 function updateFileDisplay(filteredCommits) {
-  const lines = filteredCommits.flatMap(d => d.lines);
-
-  const files = d3.groups(lines, d => d.file)
+  let lines = filteredCommits.flatMap((d) => d.lines);
+  let files = d3.groups(lines, (d) => d.file)
     .map(([name, lines]) => ({ name, lines }))
     .sort((a, b) => b.lines.length - a.lines.length);
 
-  const filesContainer = d3.select('#files')
-    .selectAll('div.file')   
-    .data(files, d => d.name);
+  let filesContainer = d3
+    .select('#files')
+    .selectAll('div')
+    .data(files, (d) => d.name)
+    .join(
+      (enter) =>
+        enter.append('div').call((div) => {
+          div.append('dt').append('code');
+          div.append('dd');
+        })
+    );
 
-  filesContainer.exit().remove();
+  filesContainer.select('dt').html(d =>
+    `<code>${d.name}</code><small>${d.lines.length} lines</small>`
+  );
 
-  const enter = filesContainer.enter()
-    .append('div')
-    .attr('class', 'file');
-
-  enter.append('dt')
-    .append('code');
-
-  enter.append('small');
-
-  enter.append('dd');
-
-  const merged = enter.merge(filesContainer);
-
-  merged.select('dt code').text(d => d.name);
-  merged.select('small').text(d => `${d.lines.length} lines`);
-
-  merged.order();  
-
-  merged.select('dd')
-    .selectAll('div.loc')
+  filesContainer
+    .select('dd')
+    .selectAll('div')
     .data(d => d.lines)
     .join('div')
     .attr('class', 'loc')
@@ -369,6 +361,14 @@ function renderScatterPlot(data, commits) {
   const xAxis = d3.axisBottom(xScale).tickFormat(d3.timeFormat('%b %d'));
   const yAxis = d3.axisLeft(yScale)
     .tickFormat(d => String(d % 24).padStart(2, '0') + ':00');
+
+  const xAxisGroup = svg.append('g')
+  .attr('class', 'x-axis')
+  .attr('transform', `translate(0, ${usableArea.bottom})`);
+
+  const yAxisGroup = svg.append('g')
+    .attr('class', 'y-axis')
+    .attr('transform', `translate(${usableArea.left}, 0)`);
 
   svg.append('g')
     .attr('transform', `translate(0, ${usableArea.bottom})`)
