@@ -8,6 +8,8 @@ let filteredCommits = [];
 let data;
 let commits;
 let rScale;
+let colors = d3.scaleOrdinal(d3.schemeTableau10);
+let xScale, yScale;
 
 async function loadData() {
   const data = await d3.csv('loc.csv', (row) => ({
@@ -201,6 +203,39 @@ function updateScatterPlot(data, commits) {
     );
 }
 
+function updateFileDisplay(filteredCommits) {
+  let lines = filteredCommits.flatMap((d) => d.lines);
+
+  let files = d3.groups(lines, (d) => d.file)
+    .map(([name, lines]) => ({ name, lines }))
+    .sort((a, b) => b.lines.length - a.lines.length);
+
+  let filesContainer = d3
+    .select('#files')
+    .selectAll('div')
+    .data(files, (d) => d.name)
+    .join(
+      (enter) =>
+        enter.append('div').call((div) => {
+          div.append('dt').append('code');
+          div.append('dd');
+        })
+    );
+
+  filesContainer.select('dt').html(d =>
+    `<code>${d.name}</code><small>${d.lines.length} lines</small>`
+  );
+
+  filesContainer
+    .select('dd')
+    .selectAll('div')
+    .data(d => d.lines)
+    .join('div')
+    .attr('class', 'loc')
+    .attr('style', d => `--color: ${colors(d.type)};`);
+}
+
+
 function onTimeSliderChange() {
   const slider = document.getElementById('commit-progress');
   commitProgress = +slider.value;
@@ -215,6 +250,8 @@ function onTimeSliderChange() {
     });
 
   updateScatterPlot(data, filteredCommits);
+  updateFileDisplay(filteredCommits);
+
 }
 
 function renderSelectionCount(selection, commits, xScale, yScale) {
@@ -298,13 +335,13 @@ function renderScatterPlot(data, commits) {
     .attr('viewBox', `0 0 ${width} ${height}`)
     .style('overflow', 'visible');
 
-  const xScale = d3
+  xScale = d3
     .scaleTime()
     .domain(d3.extent(commits, d => d.datetime))
     .range([usableArea.left, usableArea.right])
     .nice();
 
-  const yScale = d3
+  yScale = d3
     .scaleLinear()
     .domain([0, 24])
     .range([usableArea.bottom, usableArea.top]);
@@ -394,5 +431,5 @@ document.getElementById('commit-progress')
   .addEventListener('input', onTimeSliderChange);
 
 onTimeSliderChange();
-
+updateFileDisplay(commits);
 renderScatterPlot(data, commits);
