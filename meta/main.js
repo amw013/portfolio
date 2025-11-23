@@ -234,6 +234,8 @@ function updateFileDisplay(filteredCommits) {
   merged.select('dt code').text(d => d.name);
   merged.select('small').text(d => `${d.lines.length} lines`);
 
+  merged.order();  
+
   merged.select('dd')
     .selectAll('div.loc')
     .data(d => d.lines)
