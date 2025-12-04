@@ -136,16 +136,16 @@ document.addEventListener("DOMContentLoaded", () => {
     let hatState = 0; 
 
     photo.addEventListener("click", () => {
-        hatState = (hatState + 1) % 3; 
+        hatState = (hatState + 1) % 2; 
 
         hatA.style.display = "none";
-        hatB.style.display = "none";
+        //hatB.style.display = "none";
 
         if (hatState === 1) {
             hatA.style.display = "block";
             launchConfetti();
-        } else if (hatState === 2) {
-            hatB.style.display = "block";
+        // } else if (hatState === 2) {
+        //     hatB.style.display = "block";
         }
     });
 });
