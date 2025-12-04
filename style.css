@@ -6,9 +6,10 @@ html {
 
 body {
   margin: 1em;
-  font-family: sans-serif;
+  font-family: "Work Sans", sans-serif;
   line-height: 1.5;
 }
+
 
 img {
   max-width: 100%;
@@ -149,6 +150,13 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     font-size: 4em;         
 }
+
+header h1 {
+    font-size: 2em;     
+    font-weight: 400;   
+    margin-top: 0.75em;
+}
+
 
 main.resume {
     max-width: min(80ch, 90%);      
@@ -570,14 +578,14 @@ circle.selected {
   margin-top: 1rem;
 }
 
-.socials img {
-  width: 28px;
-  height: 28px;
-  opacity: 0.8;
-  transition: opacity 0.2s, transform 0.2s;
+.socials svg {
+    width: 1.9rem;
+    height: 1.9rem;
+    color: #555;                 
+    transition: color 0.25s ease, transform 0.25s ease;
 }
 
-.socials img:hover {
-  opacity: 1;
-  transform: scale(1.1);
+.socials a:hover svg {
+    color: var(--color-accent); 
+    transform: translateY(-2px); 
 }
