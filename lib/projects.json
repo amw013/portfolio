@@ -1,9 +1,27 @@
 [
     {
-        "title": "COGS 108 Final Project",
+        "title": "The Fenty Effect: Data-Driven Evidence of Inclusivity Shifts in Cosmetic Shade Ranges",
         "year": "2025",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Exploratory data analysis group project. Project description and findings will be updated after submission."
+        "image": "../images/fenty.png",
+        "description": "For this project, my team conducted an exploratory data analysis investigating how U.S. beauty brands' foundation shade ranges changed following the rise of inclusivity-first brands like Fenty Beauty in 2017. We cleaned and merged shade-level data for 6,800+ products, quantified brightness distributions from hex color codes, and analyzed trends in shade count and variance over time to evaluate whether the “Fenty Effect” corresponded with broader industry diversification. Our next step is to extend this work with formal hypothesis testing to assess the statistical significance of these patterns."
+    },
+    {
+        "title": "Build a Hit",
+        "year": "2025",
+        "image": "../images/build_a_hit.png",
+        "description": "In this group project, I helped build an interactive web tool that lets users “build” a song by adjusting musical features like tempo, energy, and danceability. We trained a logistic regression model on a large Spotify dataset to predict how likely the custom song is to become a hit and to identify the three most similar tracks. The site also generates interactive histograms that compare the user's song features against both hit and non-hit songs in the dataset."
+    },
+    {
+        "title": "Boston Bike Traffic Map",
+        "year": "2025",
+        "image": "../images/bos_bike_traffic.png",
+        "description": "In this project, I built an interactive geospatial visualization that maps traffic sensor data across San Diego. I integrated D3.js with real-world coordinate projections to render a dynamic map where users can explore traffic patterns over time using a custom time slider. The project involved data cleaning, temporal filtering, and designing clear visual encodings to highlight changes in urban movement."
+    },
+    {
+        "title": "How Will My Climate Change?",
+        "year": "2025",
+        "image": "../images/clim_change.png",
+        "description": "In this project, my group built an interactive climate visualization tool using CMIP6 historical and projected data to show how temperature and precipitation anomalies vary across the United States. The interface combines a choropleth map, time slider, variable selector, and regional brushing to help users explore spatial and temporal trends. A linked line chart reveals long-term patterns for both the U.S. average and any user-selected region. The project emphasizes accessibility, clean design, and meaningful interpretation of climate data."
     },
     {
         "title": "Deceptive Visualizations",
@@ -15,7 +33,7 @@
         "title": "The Cost of Convenience: How Industrial Processing Strips Food of Nutrition",
         "year": "2025",
         "image": "../images/Screenshot 2025-10-24 215605.png",
-        "description": "Average nutrient profiles per 100g of food (scaled 0–1 for visual clarity) across NOVA processing levels."
+        "description": "Average nutrient profiles per 100g of food (scaled 0-1 for visual clarity) across NOVA processing levels."
 
     },
     {
@@ -40,7 +58,7 @@
         "title": "San Diego Bus Network Simulation and Visualization",
         "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "I modeled, analyzesd, and visualized San Diego’s public bus network, integrating geospatial data, graph traversal, and stochastic simulation to explore transit connectivity and passenger experiences."
+        "description": "I modeled, analyzesd, and visualized San Diego's public bus network, integrating geospatial data, graph traversal, and stochastic simulation to explore transit connectivity and passenger experiences."
     },
     
     {
@@ -59,18 +77,7 @@
         "title": "Exploring Meteorite Landings with NASA Data",
         "year": "2023",
         "image": "../images/output.png",
-        "description": "This project explores NASA’s Meteorite Landings dataset to uncover patterns in meteorite discoveries around the world. Using Python (Pandas, NumPy, and visualization libraries), I cleaned and analyzed over 45,000 recorded landings to identify trends in geographic distribution, classification types, and changes over time. I also examined data accuracy by comparing “seen” vs. “recorded” events and visualized global meteorite impact sites."
-    },
-    {
-        "title": "Placeholder Project",
-        "year": "2026",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Omnis, illo atque iure nobis eos ea veniam. Veniam, in voluptatibus pariatur delectus, porro consectetur temporibus dignissimos et earum similique exercitationem consequuntur placeat quasi mollitia sint maxime. Eos, deserunt? Ab."
-    },
-    {
-        "title": "Placeholder Project",
-        "year": "2026",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Quam illo distinctio rerum ab ipsum aperiam recusandae tenetur numquam velit voluptas amet pariatur, sed qui! Eveniet, reiciendis est vitae quae consequuntur in impedit. Quia, ad eligendi? Aliquid, assumenda tenetur!"
+        "description": "This project explores NASA's Meteorite Landings dataset to uncover patterns in meteorite discoveries around the world. Using Python (Pandas, NumPy, and visualization libraries), I cleaned and analyzed over 45,000 recorded landings to identify trends in geographic distribution, classification types, and changes over time. I also examined data accuracy by comparing “seen” vs. “recorded” events and visualized global meteorite impact sites."
     }
+    
 ]

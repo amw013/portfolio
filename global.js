@@ -42,11 +42,11 @@ document.body.insertAdjacentHTML(
   'afterbegin',
   `
   <label class="color-scheme">
-    Theme:
+    theme:
     <select>
-      <option value="light dark">Automatic</option>
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
+      <option value="light dark">automatic</option>
+      <option value="light">light</option>
+      <option value="dark">dark</option>
     </select>
   </label>
   `
@@ -124,3 +124,47 @@ export async function fetchGitHubData(username) {
   return fetchJSON(`https://api.github.com/users/${username}`);
 }
 
+
+document.addEventListener("DOMContentLoaded", () => {
+    const photo = document.querySelector(".profile-photo");
+    const hatA = document.querySelector(".hat");
+    const hatB = document.querySelector(".chef-hat");
+
+    hatA.style.display = "none";
+    hatB.style.display = "none";
+
+    let hatState = 0; 
+
+    photo.addEventListener("click", () => {
+        hatState = (hatState + 1) % 3; 
+
+        hatA.style.display = "none";
+        hatB.style.display = "none";
+
+        if (hatState === 1) {
+            hatA.style.display = "block";
+            launchConfetti();
+        } else if (hatState === 2) {
+            hatB.style.display = "block";
+        }
+    });
+});
+
+function launchConfetti() {
+    const numParticles = 100; // how many confetti pieces
+    for (let i = 0; i < numParticles; i++) {
+        const confetto = document.createElement('div');
+        confetto.classList.add('confetti');
+
+        // Random starting horizontal position
+        confetto.style.left = Math.random() * 100 + 'vw';
+        confetto.style.backgroundColor = `hsl(${Math.random()*360}, 70%, 50%)`;
+        confetto.style.animationDuration = 2 + Math.random() * 2 + 's'; // 2-4s
+        confetto.style.opacity = Math.random() * 0.9 + 0.1;
+
+        document.body.appendChild(confetto);
+
+        // Remove after animation
+        confetto.addEventListener('animationend', () => confetto.remove());
+    }
+}

@@ -34,32 +34,6 @@ main {
   margin-inline: max(1em, (100% - 100ch) / 2);
 }
 
-/* nav {  
-  --border-color: oklch(50% 10% 200 / 40%);
-  display: flex;
-  border-bottom: 1px solid var(--border-color);
-  margin-bottom: 1em;
-}
-
-nav a {
-  flex: 1;
-  text-align: center;
-  padding: 0.5em;
-  text-decoration: none;
-  color: inherit;
-}
-
-nav a:hover {
-  border-bottom: 0.4em solid var(--color-accent);
-  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
-}
-
-nav a.current {
-  border-bottom: 0.4em solid var(--border-color);
-  padding-bottom: 0.1em;
-  font-weight: bold;
-} */
-
 nav {
   display: flex;
   justify-content: center;
@@ -122,6 +96,13 @@ form button {
     gap: 1em; 
 }
 
+.projects img {
+    width: 100%;            /* fill the container width */
+    height: 200px;          /* fixed height for all images */
+    object-fit: cover;      /* crop the image to fit without stretching */
+    border-radius: 8px;     /* optional, for rounded corners */
+}
+
 .projects article {
     display: grid;
     grid-template-rows: subgrid; 
@@ -141,9 +122,10 @@ h1, h2, h3, h4, h5, h6 {
 
 
 h1 {
-  font-size: 3em;     
+  font-size: 2em;     
   font-weight: 400;   
-  margin-top: 0.75em;        
+  margin-top: 0.75em; 
+  text-align: center;       
 }
 
 header h1 {
@@ -606,20 +588,34 @@ circle.selected {
     transition: outline 0.25s ease;
 }
 
-.profile-photo:hover img {
+.profile-photo:hover .me {
     outline: 4px solid var(--color-accent);
     outline-offset: 6px;
 }
 
 .profile-photo .hat {
+    display: none;
     position: absolute;
-    top: 30px;     
+    top: -15px;     
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;      
+    width: 80px;
+    height:auto;      
     display: block;    
     pointer-events: none;
-    outline: 1px solid blue;  
+    z-index: 5;
+}
+
+.profile-photo .chef-hat {
+    display: none;
+    position: absolute;
+    top: -10px;     
+    left: 35%;
+    transform: translateX(-50%) rotate(-15deg);
+    width: 80px;
+    height:auto;      
+    display: block;    
+    pointer-events: none;
     z-index: 5;
 }
 
@@ -627,6 +623,8 @@ circle.selected {
   max-width: 600px;   
   margin: 0 auto;     
   text-align: center;
+  padding-top: 20px;
+  padding-bottom: 40px;
 }
 
 header img {
@@ -636,4 +634,23 @@ header img {
   object-fit: cover;     
   display: block;
   margin-inline: auto;   
+}
+
+.confetti {
+    position: fixed;
+    top: -10px;         /* start above the viewport */
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    z-index: 9999;
+    pointer-events: none;
+    animation-name: fall;
+    animation-timing-function: linear;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
 }

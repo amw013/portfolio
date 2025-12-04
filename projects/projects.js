@@ -4,7 +4,7 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 const projects = await fetchJSON('../lib/projects.json');
 const projectsContainer = document.querySelector('.projects');
 const projectsTitle = document.querySelector('.projects-title');
-projectsTitle.textContent = `${projects.length} Projects`;
+projectsTitle.textContent = `${projects.length} projects`;
 
 let query = '';
 let selectedIndex = -1;
