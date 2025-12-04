@@ -15,6 +15,20 @@ img {
   height: auto;
 }
 
+header {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+header img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;   
+  object-fit: cover;     
+  display: block;
+  margin-inline: auto;   
+}
+
 nav ul,
 nav li {
   display: contents;
@@ -26,7 +40,7 @@ main {
   margin-inline: max(1em, (100% - 100ch) / 2);
 }
 
-nav {  
+/* nav {  
   --border-color: oklch(50% 10% 200 / 40%);
   display: flex;
   border-bottom: 1px solid var(--border-color);
@@ -50,7 +64,34 @@ nav a.current {
   border-bottom: 0.4em solid var(--border-color);
   padding-bottom: 0.1em;
   font-weight: bold;
+} */
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.5rem 0;
+  margin-bottom: 2rem;
 }
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  padding: 0.25rem;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+}
+
+nav a.current {
+  border-bottom: 2px solid var(--color-accent);
+  font-weight: 600;
+}
+
 
 input,
 textarea,
@@ -520,4 +561,23 @@ circle.selected {
 /* Content below scatterplot (unit viz, commit stats, etc.) */
 #meta-below {
   margin-top: 2rem;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.socials img {
+  width: 28px;
+  height: 28px;
+  opacity: 0.8;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.socials img:hover {
+  opacity: 1;
+  transform: scale(1.1);
 }
