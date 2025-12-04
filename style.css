@@ -21,14 +21,7 @@ header {
   margin-top: 2rem;
 }
 
-header img {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;   
-  object-fit: cover;     
-  display: block;
-  margin-inline: auto;   
-}
+
 
 nav ul,
 nav li {
@@ -595,13 +588,16 @@ circle.selected {
 
 .profile-photo {
     position: relative;
-    width: 220px;       
-    margin: 0 auto;   
+    width: 180px;
+    height: 180px;       
+    margin: 0 auto;
+    overflow: visible;   
 }
 
 .profile-photo img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
     border-radius: 50%;
     transition: outline 0.25s ease;
@@ -614,10 +610,27 @@ circle.selected {
 
 .profile-photo .hat {
     position: absolute;
-    top: -35px;     
+    top: -50px;     
     left: 50%;
     transform: translateX(-50%);
     width: 130px;      
-    display: none;    
-    pointer-events: none;  
+    display: block;    
+    pointer-events: none;
+    outline: 1px solid red;  
+    z-index: 5;
+}
+
+.intro {
+  max-width: 600px;   
+  margin: 0 auto;     
+  text-align: center;
+}
+
+header img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;   
+  object-fit: cover;     
+  display: block;
+  margin-inline: auto;   
 }
