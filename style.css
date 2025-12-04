@@ -244,44 +244,6 @@ path {
   transition: opacity 300ms;
 }
 
-/* .stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
-  gap: 1.5em;
-  margin: 2em 0;
-}
-
-.stats dt {
-  font-weight: bold;
-  margin-bottom: 0.25em;
-  font-size: 0.95em;
-  color: var(--color-accent);
-}
-
-.stats dd {
-  margin: 0;
-  font-size: 1.2em;
-  font-weight: 500;
-  color: var(--text-color, inherit);
-}
-
-.stats dt + dd {
-  margin-bottom: 1em;
-}
-
-.stats-card {
-  background-color: color-mix(in oklch, var(--color-accent) 10%, canvas 95%);
-  padding: 1em;
-  border-radius: 0.5em;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
-  transition: background-color 200ms ease;
-}
-
-[data-theme="dark"] .stats-card {
-  background-color: color-mix(in oklch, var(--color-accent) 10%, canvas 15%);
-} */
-
-
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
