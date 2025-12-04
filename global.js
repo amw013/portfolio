@@ -3,10 +3,10 @@ function $$(selector, context = document) {
 }
 
 let pages = [
-    { url: '', title: 'Home' },
-    { url: 'projects/', title: 'Projects' },
+    { url: '', title: 'home' },
+    { url: 'projects/', title: 'projects' },
     // { url: 'contact/', title: 'Contact' },
-    { url: 'resume/', title: 'Resume' },
+    { url: 'resume/', title: 'resume' },
     // { url: 'meta/', title: 'Meta' }, 
     // { url: 'https://github.com/amw013', title: 'GitHub' } 
 ];
