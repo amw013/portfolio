@@ -591,7 +591,8 @@ circle.selected {
     width: 180px;
     height: 180px;       
     margin: 0 auto;
-    overflow: visible;   
+    overflow: visible; 
+    padding-top: 40px;  
 }
 
 .profile-photo img {
@@ -610,10 +611,10 @@ circle.selected {
 
 .profile-photo .hat {
     position: absolute;
-    top: -50px;     
+    top: 30px;     
     left: 50%;
     transform: translateX(-50%);
-    width: 130px;      
+    width: 50px;      
     display: block;    
     pointer-events: none;
     outline: 1px solid red;  
