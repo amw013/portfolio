@@ -148,6 +148,10 @@ h1, h2, h3, h4, h5, h6 {
 
 
 h1 {
+    font-size: 4em;         
+}
+
+header h1 {
     font-size: 2em;     
     font-weight: 400;   
     margin-top: 0.75em;
@@ -584,4 +588,36 @@ circle.selected {
 .socials a:hover svg {
     color: var(--color-accent); 
     transform: translateY(-2px); 
+}
+
+
+
+
+.profile-photo {
+    position: relative;
+    width: 220px;       
+    margin: 0 auto;   
+}
+
+.profile-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 50%;
+    transition: outline 0.25s ease;
+}
+
+.profile-photo:hover img {
+    outline: 4px solid var(--color-accent);
+    outline-offset: 6px;
+}
+
+.profile-photo .hat {
+    position: absolute;
+    top: -35px;     
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;      
+    display: none;    
+    pointer-events: none;  
 }
