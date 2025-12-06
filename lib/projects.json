@@ -15,7 +15,7 @@
         "title": "Boston Bike Traffic Map",
         "year": "2025",
         "image": "../images/bos_bike_traffic.png",
-        "description": "In this project, I built an interactive geospatial visualization that maps traffic sensor data across San Diego. I integrated D3.js with real-world coordinate projections to render a dynamic map where users can explore traffic patterns over time using a custom time slider. The project involved data cleaning, temporal filtering, and designing clear visual encodings to highlight changes in urban movement."
+        "description": "In this project, I built an interactive geospatial visualization that maps traffic sensor data across Boston. I integrated D3.js with real-world coordinate projections to render a dynamic map where users can explore traffic patterns over time using a custom time slider. The project involved data cleaning, temporal filtering, and designing clear visual encodings to highlight changes in urban movement."
     },
     {
         "title": "How Will My Climate Change?",
