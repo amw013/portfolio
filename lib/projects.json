@@ -3,7 +3,7 @@
         "title": "The Fenty Effect: Data-Driven Evidence of Inclusivity Shifts in Cosmetic Shade Ranges",
         "year": "2025",
         "image": "../images/fenty.png",
-        "description": "For this project, my team conducted an exploratory data analysis investigating how U.S. beauty brands' foundation shade ranges changed following the rise of inclusivity-first brands like Fenty Beauty in 2017. We cleaned and merged shade-level data for 6,800+ products, quantified brightness distributions from hex color codes, and analyzed trends in shade count and variance over time to evaluate whether the “Fenty Effect” corresponded with broader industry diversification. Our next step is to extend this work with formal hypothesis testing to assess the statistical significance of these patterns."
+        "description": "This project examines whether the introduction of Fenty Beauty corresponded with measurable changes in foundation shade inclusivity across major cosmetic brands. Using cleaned product-level data, our group compared pre- and post-2017 releases and evaluated trends through exploratory analysis, hypothesis testing, and regression modeling. The analysis shows a clear increase in the number of shades offered after 2017, but suggests that expansion in shade count did not always imply broader tonal coverage, pointing to limits in how inclusivity is operationalized in the market."
     },
     {
         "title": "Build a Hit",
