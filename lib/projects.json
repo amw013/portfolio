@@ -1,82 +1,100 @@
 [
     {
+        "title": "sauced.ai",
+        "year": "2026",
+        "image": "../images/sauced.png",
+        "github": "https://github.com/amw013/sauced.ai",
+        "tags": ["Python", "Gemini API", "Browser Use", "AI Agents", "Web Scraping", "JavaScript", "HTML/CSS"],
+        "description": "Meal prepping is hard when recipes don't include nutritional info, require tools you don't have, or blow your budget. sauced.ai is an AI-powered meal prep assistant that takes the friction out of the process. Paste in a Substack recipe newsletter, describe your goals in plain English — dietary needs, taste preferences, budget — and sauced.ai scrapes the newsletter for recipes, generates nutritional metadata for each one, and ranks them against your criteria. From there, it scales your chosen recipes to your desired batch size and builds a grocery list. With one click, the entire list gets added to your Instacart cart automatically. Built with the Gemini API for recipe analysis and ranking, and Browser Use for browser automation."
+    },
+    {
+        "title": "SoCalGuessr",
+        "year": "2026",
+        "image": "../images/socalguessr.png",
+        "github": "https://github.com/amw013/SoCalGuessr",
+        "tags": ["Python", "PyTorch", "Computer Vision", "Transfer Learning", "CNN"],
+        "description": "Inspired by GeoGuessr, this project tackles a geographic image classification problem: given a Google Street View image taken somewhere in Southern California, predict which city it's from — Los Angeles, San Diego, San Luis Obispo, Bakersfield, Riverside, or Anaheim. I fine-tuned a pretrained ResNet18 CNN using transfer learning, applying data augmentation techniques including random horizontal flips and color jittering to improve generalization. The model achieved over 78.48% test accuracy, well above the 20% human baseline I recorded playing the game myself. Trained with the Adam optimizer and CrossEntropyLoss over 12 epochs on an 80/20 train-validation split, with best-checkpoint saving to prevent overfitting."
+    },
+    {
         "title": "The Fenty Effect: Data-Driven Evidence of Inclusivity Shifts in Cosmetic Shade Ranges",
         "year": "2025",
         "image": "../images/fenty.png",
+        "github": "https://github.com/COGS108/Group076_FA25",
+        "tags": ["Python", "Pandas", "Statistical Analysis", "Regression", "Matplotlib", "Scipy"],
         "description": "This project examines whether the introduction of Fenty Beauty corresponded with measurable changes in foundation shade inclusivity across major cosmetic brands. Using cleaned product-level data, our group compared pre- and post-2017 releases and evaluated trends through exploratory analysis, hypothesis testing, and regression modeling. The analysis shows a clear increase in the number of shades offered after 2017, but suggests that expansion in shade count did not always imply broader tonal coverage, pointing to limits in how inclusivity is operationalized in the market."
     },
     {
         "title": "Build a Hit",
         "year": "2025",
         "image": "../images/build_a_hit.png",
-        "description": "In this group project, I helped build an interactive web tool that lets users “build” a song by adjusting musical features like tempo, energy, and danceability. We trained a logistic regression model on a large Spotify dataset to predict how likely the custom song is to become a hit and to identify the three most similar tracks. The site also generates interactive histograms that compare the user's song features against both hit and non-hit songs in the dataset."
+        "github": "https://github.com/amw013/Build-A-Hit-Pandas-Express",
+        "tags": ["Python", "Scikit-learn", "Pandas", "JavaScript", "HTML/CSS"],
+        "description": "In this group project, I helped build an interactive web tool where users adjust musical features like tempo, energy, and danceability to compose a custom song. A logistic regression model trained on a large Spotify dataset predicts the song's likelihood of becoming a hit and surfaces the three most similar tracks, with interactive histograms comparing the user's input against hit and non-hit distributions."
     },
     {
         "title": "Boston Bike Traffic Map",
         "year": "2025",
         "image": "../images/bos_bike_traffic.png",
+        "github": "https://github.com/amw013/bos-bike-traffic",
+        "tags": ["D3.js", "JavaScript", "HTML/CSS", "Geospatial", "Data Visualization"],
         "description": "In this project, I built an interactive geospatial visualization that maps traffic sensor data across Boston. I integrated D3.js with real-world coordinate projections to render a dynamic map where users can explore traffic patterns over time using a custom time slider. The project involved data cleaning, temporal filtering, and designing clear visual encodings to highlight changes in urban movement."
     },
     {
         "title": "How Will My Climate Change?",
         "year": "2025",
         "image": "../images/clim_change.png",
+        "github": "https://github.com/stephmuna/DSC-106-Project3",
+        "tags": ["D3.js", "JavaScript", "HTML/CSS", "Data Visualization", "Geospatial"],
         "description": "In this project, my group built an interactive climate visualization tool using CMIP6 historical and projected data to show how temperature and precipitation anomalies vary across the United States. The interface combines a choropleth map, time slider, variable selector, and regional brushing to help users explore spatial and temporal trends. A linked line chart reveals long-term patterns for both the U.S. average and any user-selected region. The project emphasizes accessibility, clean design, and meaningful interpretation of climate data."
     },
     {
         "title": "Deceptive Visualizations",
         "year": "2025",
         "image": "../images/Screenshot 2025-10-24 215056.png",
-        "description": "Our group generated one data visualization supporting the proposition that black police officers are more likely to face severe discipline for substantiated complaints than officers of color, even when accounting for complaint type, and one arguing against it. These visualizations incorporated deceptive visualization techniques that convinced viewers of their respective messages."
-    },
-    {
-        "title": "The Cost of Convenience: How Industrial Processing Strips Food of Nutrition",
-        "year": "2025",
-        "image": "../images/Screenshot 2025-10-24 215605.png",
-        "description": "Average nutrient profiles per 100g of food (scaled 0-1 for visual clarity) across NOVA processing levels."
-
+        "tags": ["Data Visualization", "Statistical Analysis"],
+        "description": "Our group Designed two opposing visualizations using the same dataset on police officer disciplinary records — one supporting and one refuting a claim about disparities in discipline by officer race. Each visualization deliberately employed deceptive techniques such as misleading axes, selective framing, or cherry-picked comparisons to make a convincing case."
     },
     {
         "title": "Recipe Ratings and Health: Does Nutrition Affect How We Rate?",
         "year": "2025",
         "image": "../images/Screenshot 2025-10-24 215827.png",
-        "description": "We all have different ideas about what makes a recipe great—taste, convenience, healthiness, or a mix of all three. But when people leave reviews online, what factors most influence those ratings? For my DSC 80 final project at UC San Diego, I explored whether the nutritional content of a recipe, like its protein, sugar, or calories, influences how well it’s rated by users. I used two datasets from Food.com containing thousands of recipes and user ratings."
+        "github": "https://github.com/ameliawong1/Recipe-Rating-Analysis",
+        "tags": ["Python", "Pandas", "Statistical Analysis", "Data Cleaning"],
+        "description": "We all have different ideas about what makes a recipe great—taste, convenience, healthiness, or a mix of all three. But when people leave reviews online, what factors most influence those ratings? For my DSC 80 final project at UC San Diego, I explored whether the nutritional content of a recipe, like its protein, sugar, or calories, influences how well it’s rated by users. I used two datasets from Food.com containing 83,782 recipes and user ratings."
     },
     {
         "title": "Language Modeling from Scratch: Building N-Gram Text Generators",
         "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "I implemented and compared Uniform, Unigram, and N-Gram language models from scratch to generate text and estimate word sequence probabilities using data from Project Gutenberg."
+        "tags": ["Python", "NLP", "Language Modeling"],
+        "description": "I implemented Uniform, Unigram, and N-Gram language models from scratch to generate text and estimate word sequence probabilities, trained on classic literature from Project Gutenberg. Compared how increasing context window size affects output coherence and probability estimates."
     },
     {
         "title": "Loan Data Analysis and Tax-Adjusted Income Modeling",
         "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "I cleaned and analyzed U.S. loan data to explore relationships between credit scores, loan terms, and income after taxes. I also performed permutation testing and identified an example of Simpson’s Paradox in borrower behavior."
+        "tags": ["Python", "Pandas", "Statistical Analysis", "Data Cleaning"],
+        "description": "I cleaned and analyzed U.S. loan data to explore relationships between credit scores, loan terms, and tax-adjusted income. Conducted permutation testing to assess statistical significance and identified an instance of Simpson's Paradox in borrower behavior across income groups."
     },
     {
         "title": "San Diego Bus Network Simulation and Visualization",
         "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "I modeled, analyzesd, and visualized San Diego's public bus network, integrating geospatial data, graph traversal, and stochastic simulation to explore transit connectivity and passenger experiences."
-    },
-    
-    {
-        "title": "Data Analysis Proposal: Country GDP, Plastic Waste Production, and Recycling Rates",
-        "year": "2024",
-        "image": "../images/inbox_7974466_2e35db3d00a1499fc3ab586829a80eb9_AlbedoBase_XL_Create_a_powerful_environmental_data_visualizati_0.jpg",
-        "description": "Our group developed a structured proposal for a data analysis project analyzing the relationship between country GDP, resource consumption, plastic waste production, and recycling rates. We also designed a methodology for data collection, wrangling, visualization, and analysis, including merging real datasets found from Kaggle."
+        "tags": ["Python", "Geospatial", "Graph Algorithms", "Simulation"],
+        "description": "I modeled and visualized San Diego's public bus network using geospatial data and graph traversal algorithms. Built a stochastic simulation to explore transit connectivity and passenger wait-time distributions across the network."
     },
     {
         "title": "Image Classification with K-Nearest Neighbors",
         "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "tags": ["Python", "Machine Learning", "NumPy"],
         "description": "I implemented an image classification system from scratch using the K-Nearest Neighbors algorithm. I wrote functions to process RGB images, compute pixel-level distances, and predict labels based on nearest neighbors. I optimized my implementation for clarity and efficiency while ensuring accurate classification results across test images."
     },
     {
         "title": "Exploring Meteorite Landings with NASA Data",
         "year": "2023",
         "image": "../images/output.png",
+        "tags": ["Python", "Pandas", "NumPy", "Data Visualization"],
         "description": "This project explores NASA's Meteorite Landings dataset to uncover patterns in meteorite discoveries around the world. Using Python (Pandas, NumPy, and visualization libraries), I cleaned and analyzed over 45,000 recorded landings to identify trends in geographic distribution, classification types, and changes over time. I also examined data accuracy by comparing “seen” vs. “recorded” events and visualized global meteorite impact sites."
     }
     
